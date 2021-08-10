@@ -5,28 +5,36 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.apache.catalina.core.ApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.fis.springlearn.bean.Employee;
+import com.fis.springlearn.controller.EmployeeController;
 
 @SpringBootApplication
 public class SpringLearnApplication {
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplication.class);
 
 	public static void main(String[] args) {
-		/*
-		 * SpringApplication.run(SpringLearnApplication.class, args);
-		 * System.out.println("Hello Akash Telkar \nHow are you??");
-		 * 
-		 * displayDate();
-		 */
+//		SpringApplication.run(SpringLearnApplication.class, args);
+//		displayDate();
+//		displayCountry();
+		//displayCountries();
+		displayEmployee();
 
-		displayCountry();
-		displayCountries();
+	}
+
+	
+	static void displayEmployee() {
+		LOGGER.info("START");
+		ApplicationContext context = new ClassPathXmlApplicationContext("employee.xml");
+		Employee employee = context.getBean("employee", Employee.class);
+		LOGGER.debug("Employee : {}", employee);
+		LOGGER.info("END");
 	}
 	static void displayCountries() {
 		LOGGER.info("Start");
