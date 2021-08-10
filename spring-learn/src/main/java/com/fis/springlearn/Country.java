@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 
 public class Country {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplication.class);
-	@Override
-	public String toString() {
-		return "Country [code=" + code + ", name=" + name + "]";
-	}
+	
 	public String getCode() {
 		return code;
 	}
@@ -30,5 +27,10 @@ public class Country {
 		
 	}
 	
+	//If you don't override toString() ie (you comment the toString() ) then you will get output as address of class 
+	/*
+	 * @Override public String toString() { return "Country [code=" + code +
+	 * ", name=" + name + "]"; }
+	 */
 
 }

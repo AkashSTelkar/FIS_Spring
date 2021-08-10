@@ -4,8 +4,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
         
-        <bean id="country" class="com.fis.springlearn.Country">
+        <bean id="country" class="com.fis.springlearn.Country" scope="prototype">
         <property name="code" value="IN" />
         <property name="name" value="India" />
         </bean>
+        
+        <!-- <bean id="anothercountry" class="com.fis.springlearn.Country">
+        <property name="code" value="AUS" />
+        <property name="name" value="Australia" />
+        </bean> -->
 </beans>
