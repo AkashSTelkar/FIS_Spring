@@ -2,8 +2,10 @@ package com.fis.springlearn;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
+import org.apache.catalina.core.ApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -24,16 +26,28 @@ public class SpringLearnApplication {
 		 */
 
 		displayCountry();
-
+		displayCountries();
 	}
-
+	static void displayCountries() {
+		LOGGER.info("Start");
+		ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("country.xml");
+		ArrayList<Country> countries = context.getBean("countryList", ArrayList.class);
+		LOGGER.debug("Countries:{}",countries);
+		LOGGER.info("End");
+	}
 	static void displayCountry() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
 		Country country = context.getBean("country", Country.class);
-		Country anotherCountry = context.getBean("country", Country.class);
-
+		Country anotherCountry2 = context.getBean("country", Country.class);
+		
+		Country anotherCountry = context.getBean("anothercountry", Country.class);
+		
+		//LOGGER IS USED TO PRINT into text file while doing LIVE project so that there are not required to check in console
+		//System.out.println() is used to print on console
+		
 		LOGGER.debug("Country : {}", country);
 		 
+		LOGGER.debug("Country : {}", anotherCountry2);
 		LOGGER.debug("Country : {}", anotherCountry);
 	}
 
