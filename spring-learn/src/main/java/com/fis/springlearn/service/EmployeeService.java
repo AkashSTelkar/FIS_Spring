@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.fis.springlearn.dao.EmployeeDao;
 
-@Component
+
 public class EmployeeService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeService.class);
 
@@ -17,7 +17,7 @@ public class EmployeeService {
 		LOGGER.debug("Inside Employee Service");
 	}
 
-	@Autowired
+	
 	public void setEmployeeDao(EmployeeDao employeeDao) {
 		this.employeeDao = employeeDao;
 	}

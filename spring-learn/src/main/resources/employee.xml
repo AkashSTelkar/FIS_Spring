@@ -6,10 +6,47 @@
 
 	<bean id="employee" class="com.fis.springlearn.bean.Employee">
 		<property name="id" value="10"></property>
-		<property name="name" value="AkashTelkar"></property>
-		<property name="salary" value="20000"></property>
+		<property name="name" value="Akash S Telkar"></property>
+		<property name="salary" value="10000"></property>
 		<property name="permanent" value="true"></property>
 		<property name="dateOfBirth" value="8/10/2021"></property>
+		<property name="department" ref="departmentBean" />
+		<property name="skills">
+			<array>
+				<ref bean="skillHtml" />
+				<ref bean="skillCss" />
+				<ref bean="skillJs" />
+			</array>
+		</property>
+
+	</bean>
+	<bean id="departmentBean"
+		class="com.fis.springlearn.bean.Department">
+		<property name="id" value="1" />
+		<property name="name" value="Payroll" />
+	</bean>
+	<bean id="skillHtml" class="com.fis.springlearn.bean.Skill">
+		<property name="id" value="100" />
+		<property name="name" value="html" />
+	</bean>
+	<bean id="skillCss" class="com.fis.springlearn.bean.Skill">
+		<property name="id" value="200" />
+		<property name="name" value="css" />
+	</bean>
+	<bean id="skillJs" class="com.fis.springlearn.bean.Skill">
+		<property name="id" value="300" />
+		<property name="name" value="js" />
 	</bean>
 
+	<bean id="dao" class="com.fis.springlearn.dao.EmployeeDao">
+
+	</bean>
+	<bean id="service"
+		class="com.fis.springlearn.service.EmployeeService">
+		<property name="employeeDao" ref="dao"></property>
+	</bean>
+	<bean id="controller"
+		class="com.fis.springlearn.controller.EmployeeController">
+		<property name="employeeService" ref="service"></property>
+	</bean>
 </beans>

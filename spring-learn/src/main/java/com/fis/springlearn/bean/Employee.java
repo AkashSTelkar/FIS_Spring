@@ -14,7 +14,8 @@ public class Employee {
 	double salary;
 	boolean permanent;
 	Date dateOfBirth;
-	
+	Department department;
+	Skill[] skills;
 
 	public Employee() {
 		LOGGER.debug("Inside Employee Constructor");
@@ -60,11 +61,27 @@ public class Employee {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	public Skill[] getSkills() {
+		return skills;
+	}
+
+	public void setSkills(Skill[] skills) {
+		this.skills = skills;
+	}
 
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", permanent=" + permanent
-				+ ", dateOfBirth=" + dateOfBirth ;
+				+ ", dateOfBirth=" + dateOfBirth + ", department=" + department + ", skills=" + Arrays.toString(skills)
+				+ "]";
 	}
 
 }

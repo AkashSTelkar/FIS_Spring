@@ -9,20 +9,27 @@ import org.springframework.stereotype.Component;
 
 import com.fis.springlearn.service.EmployeeService;
 
-@Component
-@Configuration
-@ComponentScan("com.fis.springlearn.bean")
+
 public class EmployeeController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
 	private EmployeeService employeeService;
-
+	
+	
 	public EmployeeController() {
 		LOGGER.debug("Inside Employee Controller");
 	}
 
-	@Autowired
+	
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
+
+
+	@Override
+	public String toString() {
+		return "EmployeeController [employeeService=" + employeeService + "]";
+	}
+
+	
 }
