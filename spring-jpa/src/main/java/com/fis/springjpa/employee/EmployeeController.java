@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/employee")
 public class EmployeeController {
 
-	@Autowired
+	@Autowired 
 	private EmployeeRepository employeeRepository;
 
 	@PostMapping

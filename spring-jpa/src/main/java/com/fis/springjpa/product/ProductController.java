@@ -62,7 +62,7 @@ public class ProductController {
 	@DeleteMapping
 	public String deleteProduct(@RequestParam int id) {
 		Optional<Product> p = productRepository.findById(id);
-		if (p.isPresent()) {
+		if (p.isPresent()) { 
 			productRepository.delete(p.get());
 			return "Deleted";
 		} else {
