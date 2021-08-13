@@ -1,0 +1,137 @@
+https://docs.google.com/forms/d/e/1FAIpQLScj7nsZr1uXlv4p1MLGSqFzcKAp8QhRJlV6zsme04AtwPH3QA/viewform?usp=sf_link
+https://docs.google.com/forms/d/e/1FAIpQLScj7nsZr1uXlv4p1MLGSqFzcKAp8QhRJlV6zsme04AtwPH3QA/viewform?usp=sf_link
+
+
+Assessment Link
+https://docs.google.com/forms/d/e/1FAIpQLSfiaQ45mzJ19PriXvi2jO4DHYj-83z6kkLsEM-C4oBbqmFN6A/viewform?usp=sf_link
+
+Feedback Link - Spring
+https://docs.google.com/forms/d/e/1FAIpQLSfbcARpKM9a26gsyCJRlIbVPj1EMWP1dVeqNkvfwZ2QfplP5A/viewform?usp=sf_link
+
+
+
+
+https://www.baeldung.com/spring-response-status
+
+https://spring.io/guides/gs/testing-web/
+https://spring.io/guides/gs/securing-web/
+https://www.postman.com/downloads/
+===============================================================================
+// Adding a Product
+- POST
+localhost:8082/products/add 
+- RequestBody 
+{
+    "name":"Pencil",
+    "price":20
+}
+
+//Viewing all products
+-GET
+localhost:8080/products/
+
+//Updating a product price & name based on the id
+-PUT
+localhost:8080/products - @RequestBody 
+- RequestBody
+{
+    "id":3,
+    "name":"MicrotipPencil",
+    "price":30
+}
+
+//Deleting a product based on the id - @RequestParam
+-DELETE
+localhost:8080/products?id=1 
+
+//Get a product based on the id - @PathVariable
+-GET
+localhost:8080/products/2 
+==========================================================================================
+@RestController 
+@RequestMapping("/products")
+public class ProductController {
+	@Autowired
+	ProductRepository productRepository;
+
+	@GetMapping
+	public Iterable<Product> getAllProducts() {
+		return productRepository.findAll();
+	}
+
+	@PostMapping
+	public String addProduct(@RequestBody Product product) {
+		productRepository.save(product);
+		return "Saved";
+	}
+
+	@PutMapping
+	public String updateProduct(@RequestBody Product product) {
+		Optional<Product> p = productRepository.findById(product.getId());
+		if (p.isPresent()) {
+			productRepository.save(product);
+			return "Updated";
+		} else {
+			return "Product Not Found!!";
+		}
+	}
+
+	@DeleteMapping
+	public String deleteProduct(@RequestParam int id) {
+		Optional<Product> p = productRepository.findById(id);
+		if (p.isPresent()) {
+			productRepository.delete(p.get());
+			return "Deleted";
+		} else {
+			return "Product Not Found!!";
+		}
+	}
+
+	@GetMapping("/{id}")
+	public Object getAProduct(@PathVariable int id) {
+		Optional<Product> p = productRepository.findById(id);
+		if (p.isPresent()) {
+			return p.get();
+		} else {
+			return "Product Not Found!!";
+		}
+	}
+
+}
+
+
+Feedback Form Day 1 - https://forms.gle/6EFPiDNgLZkrn4y2A
+Feedback Form Day 2 - https://forms.gle/Nj7Sr1v7NEfMSCdc8
+
+https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/jdbc.html
+
+
+create database test;
+use test;
+
+create table product
+( 
+id int,
+name varchar(25)
+);
+
+insert into product values(10,"pen");
+insert into product values(20,"pencil");
+
+https://github.com/JananiVelmurugan/spring-jdbc
+
+NOTE : Please change the password Cloud@123$ before execution in daoexample.xml(src/main/resources)
+
+1. Create table employee with id,name and two records
+2. Create a package "com.fis.springjdbc.employee"
+3. Create class Employee(refer Product)
+4. Create interface IEmployee(refer IProduct)
+5. Create class  EmployeeDAOImpl(refer ProductDAOImpl)
+6. Create class EmployeeMapper(refer ProductMapper)
+7. Create class TestEmployee(refer TestProduct)
+8. Open daoexample.xml and create a new bean employeeDao(refer productDao)
+
+
+https://spring.io/guides/gs/accessing-data-mysql/
+
+https://docs.google.com/forms/d/e/1FAIpQLScj7nsZr1uXlv4p1MLGSqFzcKAp8QhRJlV6zsme04AtwPH3QA/viewform?usp=sf_link
